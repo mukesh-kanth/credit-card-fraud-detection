@@ -91,7 +91,7 @@ input_data = pd.DataFrame({
 
 # Predict fraud
 if st.button("DETECT"): 
-    pred = random.predict(np.array([[V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V17,V18,V19,V20,V21,V22,V23,V24,V25,V26,V27,V28]]))
+    pred = random.predict(np.array([[float(V) for V in [V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V17,V18,V19,V20,V21,V22,V23,V24,V25,V26,V27,V28,V29,V30]]]))
     if pred[0] == 1:
         st.error("🚨 Fraudulent Transaction Detected!")
     else:
