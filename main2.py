@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 import pandas as pd
 import pickle
 
@@ -6,11 +7,11 @@ import pickle
 @st.cache_data
 def load_model():
     with open("random.pkl", "rb") as file:
-        model = pickle.load(file)
-    return model
+        random = pickle.load(file)
+    return random
 
 # Load the model
-model = load_model()
+random = load_model()
 
 # Streamlit UI
 st.title("Credit Card Fraud Detection")
@@ -92,8 +93,8 @@ input_data = pd.DataFrame({
 
 # Predict fraud
 if st.button("DETECT"): 
-    prediction = model.predict(input_data)
-    if prediction[0] == 1:
+    pred = random.predict(np.array([[V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V17,V18,V19,V20,V21,V22,V23,V24,V25,V26,V27,V28,V29,V30]]))
+    if pred[0] == 1:
         st.error("🚨 Fraudulent Transaction Detected!")
     else:
         st.success("✅ Transaction is Legitimate.")
