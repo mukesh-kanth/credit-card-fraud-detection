@@ -15,11 +15,10 @@ random = load_model()
 
 # Streamlit UI
 st.title("Credit Card Fraud Detection")
-st.write("Enter transaction details to predict fraud.")
+st.write("Enter transaction details to detect fraud.")
 
 # Input fields for transaction data
 amount = st.number_input("Transaction Amount", min_value=0.01, step=0.01)
-time = st.number_input("Transaction Time", min_value=0.0, step=1.0)
 
 # Assuming the model was trained on PCA-transformed data, user needs to input additional Vs
 V1 = st.number_input("V1")
@@ -31,7 +30,7 @@ V6 = st.number_input("V6")
 V7 = st.number_input("V7")
 V8 = st.number_input("V8")
 V9 = st.number_input("V9")
-V10 = st.number_input("V10")
+V10= st.number_input("V10")
 V11= st.number_input("V11")
 V12= st.number_input("V12")
 V13= st.number_input("V13")
@@ -91,7 +90,7 @@ input_data = pd.DataFrame({
 
 # Predict fraud
 if st.button("DETECT"): 
-    pred = random.predict(np.array([[float(V) for V in [V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V17,V18,V19,V20,V21,V22,V23,V24,V25,V26,V27,V28,V29,V30]]]))
+    pred = random.predict(np.array([[float(V) for V in [V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V17,V18,V19,V20,V21,V22,V23,V24,V25,V26,V27,V28]]]))
     if pred[0] == 1:
         st.error("🚨 Fraudulent Transaction Detected!")
     else:
