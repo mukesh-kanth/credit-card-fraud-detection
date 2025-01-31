@@ -15,7 +15,7 @@ random = load_model()
 
 # Streamlit UI
 st.title("Credit Card Fraud Detection")
-st.write("Enter transaction details to detect fraud.")
+st.write("Enter transaction details to predict fraud.")
 
 # Input fields for transaction data
 amount = st.number_input("Transaction Amount", min_value=0.01, step=0.01)
@@ -30,7 +30,7 @@ V6 = st.number_input("V6")
 V7 = st.number_input("V7")
 V8 = st.number_input("V8")
 V9 = st.number_input("V9")
-V10= st.number_input("V10")
+V10 = st.number_input("V10")
 V11= st.number_input("V11")
 V12= st.number_input("V12")
 V13= st.number_input("V13")
@@ -49,7 +49,8 @@ V25= st.number_input("V25")
 V26= st.number_input("V26")
 V27= st.number_input("V27")
 V28= st.number_input("V28")
-
+V29= st.number_input("V29")
+V30= st.number_input("V30")
 
 
 # Create DataFrame from input
@@ -83,14 +84,15 @@ input_data = pd.DataFrame({
     "V25": [V25],
     "V26": [V26],
     "V27": [V27],
-    "V28": [V28]
-   
+    "V28": [V28],
+    "V29": [V29],
+    "V30": [V30]
 })
 
 # Predict fraud
 if st.button("DETECT"): 
-    pred = random.predict(np.array([[float(V) for V in [V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V17,V18,V19,V20,V21,V22,V23,V24,V25,V26,V27,V28]]]))
-    if pred[0] == 1:
+    pred = random.predict(np.array([[float(V) for V in [V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V17,V18,V19,V20,V21,V22,V23,V24,V25,V26,V27,V28,V29,V30]]]))
+    if pred[0]:
         st.error("🚨 Fraudulent Transaction Detected!")
     else:
         st.success("✅ Transaction is Legitimate.")
