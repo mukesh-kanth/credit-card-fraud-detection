@@ -54,7 +54,6 @@ V28= st.number_input("V28")
 
 # Create DataFrame from input
 input_data = pd.DataFrame({
-    "Time": [time],
     "Amount": [amount],
     "V1": [V1],
     "V2": [V2],
